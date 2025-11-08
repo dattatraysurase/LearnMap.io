@@ -3,12 +3,24 @@ import { config } from "dotenv"
 config();
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
+
+// middlewares
+ app.use(express.json());
+ app.use(express.urlencoded({extended:true}));
+
+
 
 
 // DB connection function
 import connectDb from "./config/connectdb.js";
+import responder from "./utils/responder.js";
+
+// controllers
+import { postSignup } from "./controller/auth.controller.js";
+
+app.post("/signup",postSignup);
+
 
 
 
