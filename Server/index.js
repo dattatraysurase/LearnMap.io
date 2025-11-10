@@ -34,10 +34,18 @@ app.use(cors({
 import connectDb from "./config/connectdb.js";
 import responder from "./utils/responder.js";
 
+
 // controllers
-import { postSignup } from "./controller/auth.controller.js";
+import { postSignup,postLogin} from "./controller/auth.controller.js";
+import verifyToken from "./middleware/verifyJwt.js";
 
 app.post("/signup",postSignup);
+app.post("/Login",postLogin)
+
+app.get("/dashboard",verifyToken,(req,res)=>{
+    console.log(req.user.id)
+    return responder(res,200,null,"dashboard",true)
+})
 
 
 
