@@ -9,14 +9,14 @@ const verifyToken = (req, res, next) => {
              return responder(res,404,null,"please login",false)
          }
          else{
-            let decoded = jwt.verify(token,process.env.JWT_SECREAT);
-            req.user = decoded;
+            let decoded = jwt.verify(token,process.env.JWT_SECRET);
+            req.User = decoded;
             next();
          }
     } catch (error) {
         return responder(res,error.status || 500,null,error.message,false)
       
     }
-}
+} 
 
-export default verifyToken;
+export {verifyToken}

@@ -37,15 +37,15 @@ import responder from "./utils/responder.js";
 
 // controllers
 import { postSignup,postLogin} from "./controller/auth.controller.js";
-import verifyToken from "./middleware/verifyJwt.js";
+import {ganarateRoadmap} from "./controller/roadmapcontrol.js";
+import {verifyToken} from "./middleware/verifyJwt.js";
+
 
 app.post("/signup",postSignup);
 app.post("/Login",postLogin)
+app.post("/ganarate",verifyToken,ganarateRoadmap);
 
-app.get("/dashboard",verifyToken,(req,res)=>{
-    console.log(req.user.id)
-    return responder(res,200,null,"dashboard",true)
-})
+
 
 
 

@@ -104,7 +104,7 @@ const postLogin = async (req, res) => {
 
          req.session.token = token;  // store token in Our session...
 
-         console.log(token)
+        //  console.log(token)
          return responder(res,200,null,"login successfully",true)
 
          
